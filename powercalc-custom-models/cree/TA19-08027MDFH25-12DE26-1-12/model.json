@@ -1,0 +1,15 @@
+{
+    "measure_description": "Measured with utils/measure script",
+    "measure_device": "Wemo Insight",
+    "measure_method": "script",
+    "measure_settings": {
+        "SAMPLE_COUNT": 1,
+        "SLEEP_TIME": 2,
+        "VERSION": "v0.18.4:docker"
+    },
+    "name": "Cree 60-Watt Equivalent, A19, 2700K, 815 Lumens (TA19-08027MDFH25-12DE26-1-12)",
+    "standby_power": 0.17,
+    "supported_modes": [
+        "lut"
+    ]
+}

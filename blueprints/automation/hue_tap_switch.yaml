@@ -1,0 +1,104 @@
+blueprint:
+  name: Hue Tap Switch
+  description: Configure button one to turn off lights and other three buttons to turn on scenes.
+  domain: automation
+  input:
+    tap_switch:
+      name: Tap Switch
+      description: Hue round tap switch
+      selector:
+        device:
+          filter:
+            - manufacturer: Signify Netherlands B.V.
+              model: Hue tap switch (ZGPSWITCH)
+    lights_target:
+      name: Light(s)
+      description: The light(s) turned off by button 1
+      selector:
+        target:
+          entity:
+            domain: light
+    scene_or_script_1:
+      name: Scene/Script 1
+      description: Scene/Script activated by button 2
+      default: {}
+      selector:
+        target:
+          entity:
+            domain:
+              - scene
+              - script
+    scene_or_script_2:
+      name: Scene/Script 2
+      description: Scene/Script activated by button 3
+      default: {}
+      selector:
+        target:
+          entity:
+            domain:
+              - scene
+              - script
+    scene_or_script_3:
+      name: Scene/Script 3
+      description: Scene/Script activated by button 4
+      default: {}
+      selector:
+        target:
+          entity:
+            domain:
+              - scene
+              - script
+trigger:
+  - device_id: !input tap_switch
+    domain: hue
+    platform: device
+    type: initial_press
+    subtype: 1
+    id: button_1_initial_press
+  - device_id: !input tap_switch
+    domain: hue
+    platform: device
+    type: initial_press
+    subtype: 2
+    id: button_2_initial_press
+  - device_id: !input tap_switch
+    domain: hue
+    platform: device
+    type: initial_press
+    subtype: 3
+    id: button_3_initial_press
+  - device_id: !input tap_switch
+    domain: hue
+    platform: device
+    type: initial_press
+    subtype: 4
+    id: button_4_initial_press
+variables:
+  scene_or_script_3: !input scene_or_script_3
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: button_1_initial_press
+        sequence:
+          - service: light.turn_off
+            target: !input lights_target
+      - conditions:
+          - condition: trigger
+            id: button_2_initial_press
+        sequence:
+          - service: script.turn_on
+            target: !input scene_or_script_1
+      - conditions:
+          - condition: trigger
+            id: button_3_initial_press
+        sequence:
+          - service: script.turn_on
+            target: !input scene_or_script_2
+      - conditions:
+          - condition: trigger
+            id: button_4_initial_press
+        sequence:
+          - service: "{{ scene_or_script_3.domain }}.turn_on"
+            target: !input scene_or_script_3
+mode: single

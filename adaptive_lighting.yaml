@@ -1,0 +1,8 @@
+# initial_transition: 0
+# min_brightness: 10
+# detect_non_ha_changes: true
+# take_over_control: true
+#lights:
+  # - light.lamp_light
+  # - light.living_room_main_lights
+  # - light.kitchen_lights

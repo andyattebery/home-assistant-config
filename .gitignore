@@ -1,0 +1,12 @@
+.storage
+blueprints/automation/**
+blueprints/script/**
+custom_components
+themes/**
+tts
+www/**
+zigbee2mqtt
+*.db*
+*.log*
+*.pem
+secrets.yaml

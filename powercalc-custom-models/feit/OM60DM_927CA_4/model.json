@@ -1,0 +1,15 @@
+{
+    "measure_description": "Measured with utils/measure script",
+    "measure_device": "Belkin Wemo Insight",
+    "measure_method": "script",
+    "measure_settings": {
+        "SAMPLE_COUNT": 1,
+        "SLEEP_TIME": 2,
+        "VERSION": "v0.18.4:docker"
+    },
+    "name": "Feit Electric 60-Watt Equivalent A19 2700K (OM60DM/927CA/4)",
+    "standby_power": 0.17,
+    "supported_modes": [
+        "lut"
+    ]
+}

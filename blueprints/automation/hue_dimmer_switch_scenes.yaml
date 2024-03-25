@@ -1,0 +1,82 @@
+blueprint:
+  name: Hue Dimmer Switch (V1) With Scenes
+  description: |
+    Configure on, off, increase brightness, and decrease brightness buttons.
+    Pressing button 1 multiple times can cycle through scenes.
+  domain: automation
+  input:
+    dimmer_switch:
+      name: Dimmer Switch
+      description: The Hue four button dimmer switch
+      selector:
+        device:
+          filter:
+            - manufacturer: Signify Netherlands B.V.
+              model: Hue dimmer switch (RWL020)
+    lights:
+      name: Light(s)
+      description: The light(s) to control
+      selector:
+        target:
+          entity:
+            domain: light
+    scenes:
+      name: Scenes
+      default: {}
+      selector:
+        target:
+          entity:
+            domain: scene
+trigger:
+  - device_id: !input dimmer_switch
+    domain: hue
+    platform: device
+    type: short_release
+    subtype: 1
+  - device_id: !input dimmer_switch
+    domain: hue
+    platform: device
+    type: short_release
+    subtype: 2
+  - device_id: !input dimmer_switch
+    domain: hue
+    platform: device
+    type: short_release
+    subtype: 3
+  - device_id: !input dimmer_switch
+    domain: hue
+    platform: device
+    type: short_release
+    subtype: 4
+action:
+  - variables:
+      type: "{{ trigger.event.data.type }}"
+      button_number: "{{ trigger.event.data.subtype }}"
+  - choose:
+      - conditions:
+          - "{{ button_number == 1 }}"
+        sequence:
+          - service: scene
+            target: !input lights
+      - conditions:
+          - "{{ button_number == 2 }}"
+        sequence:
+          - service: light.turn_on
+            target: !input lights
+            data:
+              brightness_step_pct: 10
+              transition: 1
+      - conditions:
+          - "{{ button_number == 3 }}"
+        sequence:
+          - service: light.turn_on
+            target: !input lights
+            data:
+              brightness_step_pct: -10
+              transition: 1
+      - conditions:
+          - "{{ button_number == 4 }}"
+        sequence:
+          - service: light.turn_off
+            target: !input lights
+mode: single

@@ -1,0 +1,31 @@
+# - platform: group
+#   unique_id: light.master_bathroom_overhead
+#   name: Overhead Lights
+#   entities:
+#     - light.master_bathroom_overhead_bathtub
+#     - light.master_bathroom_overhead_shower
+# - platform: group
+#   unique_id: light.living_room_tv
+#   name: TV Lights
+#   entities:
+#     - light.living_room_tv_left
+#     - light.living_room_tv_right
+- platform: group
+  unique_id: light.main_bedroom_nightstand
+  name: Nightstand Lights
+  entities:
+    - light.main_bedroom_nightstand_left
+    - light.main_bedroom_nightstand_right
+- platform: group
+  unique_id: light.nursery_floor_lamp
+  name: Floor Lamp
+  entities:
+    - light.nursery_floor_lamp_1
+    - light.nursery_floor_lamp_2
+    - light.nursery_floor_lamp_3
+# - platform: group
+#   unique_id: light.second_bathroom_sink
+#   name: Sink Lights
+#   entities:
+#     - light.second_bathroom_sink_left
+#     - light.second_bathroom_sink_right

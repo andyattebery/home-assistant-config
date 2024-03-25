@@ -1,0 +1,3 @@
+{% macro rack_power_entities() %}
+{{ states.sensor | selectattr('entity_id', 'in', area_entities('Rack')) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'power') | list }}
+{% endmacro %}

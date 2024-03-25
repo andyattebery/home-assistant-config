@@ -1,0 +1,35 @@
+create_utility_meters: true
+enable_autodiscovery: false
+sensors:
+  - create_group: Lights
+    include:
+      domain: light
+  # - entity_id: light.living_room_tv
+  #   manufacturer: signify
+  #   model: LLC011
+  #   multiply_factor: 2
+  # - entity_id: light.main_bathroom_overhead
+  #   manufacturer: signify
+  #   model: LTB002
+  #   multiply_factor: 2
+  - entity_id: light.main_bedroom_nightstand
+    manufacturer: signify
+    model: LTW004
+    multiply_factor: 2
+  - entity_id: light.nursery_floor_lamp
+    manufacturer: signify
+    model: LTW004
+    multiply_factor: 3
+  # - entity_id: light.living_room_main
+  #   manufacturer: cree
+  #   model: TA19-08027MDFH25-12DE26-1-12
+  #   multiply_factor: 3
+  # - entity_id: light.second_bathroom_sink
+  #   manufacturer: signify
+  #   model: LTB002
+  #   multiply_factor: 2
+  # - entity_id: light.kitchen_overhead
+  #   linear:
+  #     min_power: 0.5
+  #     max_power: 20
+  #   multiply_factor: 2

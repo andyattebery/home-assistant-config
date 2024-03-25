@@ -1,0 +1,9 @@
+resources:
+  - url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
+    type: module
+  - type: js
+    url: /hacsfiles/custom-brand-icons/custom-brand-icons.js
+  - type: module
+    url: /hacsfiles/apexcharts-card/apexcharts-card.js
+  - type: module
+    url: /hacsfiles/lovelace-mushroom/lovelace-mushroomjs

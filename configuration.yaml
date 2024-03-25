@@ -1,0 +1,35 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# adaptive_lighting: !include adaptive_lighting.yaml
+automation: !include automations.yaml
+group: !include groups.yaml
+homekit: !include homekit.yaml
+light groups: !include light_groups.yaml
+logger: !include logger.yaml
+lovelace: !include lovelace.yaml
+powercalc: !include powercalc.yaml
+sensor: !include sensors.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+switch: !include switches.yaml
+template: !include templates.yaml
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+http:
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+
+tts:
+  - platform: google_translate
+
+kaiterra:
+  api_key: !secret kaiterra_api_key
+  devices:
+    - device_id: !secret kaiterra_device_id
+      type: laseregg
+      name: Living Room Laser Egg
+# zha:
+#   custom_quirks_path: /config/custom_zha_quirks/

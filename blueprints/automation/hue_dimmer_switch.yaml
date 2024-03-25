@@ -1,0 +1,78 @@
+blueprint:
+  name: Hue Dimmer Switch (V1)
+  description: Configure on, increase brightness, decrease brightness, and off buttons
+  domain: automation
+  input:
+    dimmer_switch:
+      name: Dimmer Switch
+      description: The Hue four button dimmer switch
+      selector:
+        device:
+          filter:
+            - manufacturer: Signify Netherlands B.V.
+              model: Hue dimmer switch (RWL020)
+    lights:
+      name: Light(s)
+      description: The light(s) to control
+      selector:
+        target:
+          entity:
+            domain: light
+trigger:
+  - device_id: !input dimmer_switch
+    domain: hue
+    platform: device
+    type: short_release
+    subtype: 1
+    id: button_on_short_release
+  - device_id: !input dimmer_switch
+    domain: hue
+    platform: device
+    type: short_release
+    subtype: 2
+    id: button_dim_up_short_release
+  - device_id: !input dimmer_switch
+    domain: hue
+    platform: device
+    type: short_release
+    subtype: 3
+    id: button_dim_down_short_release
+  - device_id: !input dimmer_switch
+    domain: hue
+    platform: device
+    type: short_release
+    subtype: 4
+    id: button_off_short_release
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: button_on_short_release
+        sequence:
+          - service: light.turn_on
+            target: !input lights
+      - conditions:
+          - condition: trigger
+            id: button_dim_up_short_release
+        sequence:
+          - service: light.turn_on
+            target: !input lights
+            data:
+              brightness_step_pct: 10
+              transition: 1
+      - conditions:
+          - condition: trigger
+            id: button_dim_down_short_release
+        sequence:
+          - service: light.turn_on
+            target: !input lights
+            data:
+              brightness_step_pct: -10
+              transition: 1
+      - conditions:
+          - condition: trigger
+            id: button_off_short_release
+        sequence:
+          - service: light.turn_off
+            target: !input lights
+mode: single

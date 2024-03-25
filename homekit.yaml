@@ -1,0 +1,25 @@
+- filter:
+    include_entities:
+      - light.office_keylight
+      - sensor.air_gradient_humidity
+      - sensor.air_gradient_pm_2_5
+      - sensor.air_gradient_co2
+      - sensor.air_gradient_temperature
+      - sensor.awair_element_1_carbon_dioxide
+      - sensor.awair_element_1_humidity
+      - sensor.awair_element_1_pm2_5
+      - sensor.awair_element_1_temperature
+      - sensor.awair_element_2_carbon_dioxide
+      - sensor.awair_element_2_humidity
+      - sensor.awair_element_2_pm2_5
+      - sensor.awair_element_2_temperature
+      - sensor.awair_element_3_carbon_dioxide
+      - sensor.awair_element_3_humidity
+      - sensor.awair_element_3_pm2_5
+      - sensor.awair_element_3_temperature
+      - switch.desk_3_switch_01_outlet_switch_1
+      - switch.desk_3_switch_01_outlet_switch_2
+      - switch.desk_3_switch_02_outlet_switch_1
+      - switch.desk_3_switch_02_outlet_switch_2
+      - switch.christmas_tree
+      - switch.repeater_outlet

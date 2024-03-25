@@ -1,0 +1,77 @@
+- sensor:
+    # - name: Rack UPS Power
+    #   unique_id: sensor.rack_ups_power
+    #   device_class: power
+    #   unit_of_measurement: W
+    #   state: >
+    #     {%  set load = states('sensor.rack_ups_load') | float %}
+    #     {%  set nominal_power = states('sensor.rack_ups_nominal_real_power') | float %}
+    #     {{ load / 100 * nominal_power }}
+    # - name: Desk UPS Power
+    #   unique_id: sensor.desk_ups_power
+    #   device_class: power
+    #   unit_of_measurement: W
+    #   state: >
+    #     {%  set load = states('sensor.desk_ups_load') | float %}
+    #     {%  set nominal_power = states('sensor.desk_ups_nominal_real_power') | float %}
+    #     {{ load / 100 * nominal_power }}
+    # - name: TV UPS Power
+    #   unique_id: sensor.tv_ups_power
+    #   device_class: power
+    #   unit_of_measurement: W
+    #   state: >
+    #     {%  set load = states('sensor.tv_ups_load') | float %}
+    #     {%  set nominal_power = 200.0 %}
+    #     {{ load / 100 * nominal_power }}
+    # - name: Living Room Humidifier Power
+    #   unique_id: sensor.living_room_humidifier_power
+    #   device_class: power
+    #   unit_of_measurement: W
+    #   state: "{{ 6.2 }}"
+    # - name: Nursery TVOC Sensor VOC ppb
+    #   unique_id: sensor.nursery_tvoc_sensor_volatile_organic_compound_ppb
+    #   device_class: volatile_organic_compounds
+    #   unit_of_measurement: ppb
+    #   state: >
+    #     {% set micro_gram_per_cubic_meter = states('sensor.nursery_tvoc_sensor_volatile_organic_compound_density') | float %}
+    #     {{ (micro_gram_per_cubic_meter / 2.28571429) | round | int }}
+    # - name: Main Bedroom TVOC Sensor VOC ppb
+    #   unique_id: sensor.main_bedroom_tvoc_sensor_volatile_organic_compound_ppb
+    #   device_class: volatile_organic_compounds
+    #   unit_of_measurement: ppb
+    #   state: >
+    #     {% set micro_gram_per_cubic_meter = states('sensor.main_bedroom_tvoc_sensor_volatile_organic_compound_density') | float %}
+    #     {{ (micro_gram_per_cubic_meter / 2.29545455) | round | int }}
+    # - name: Rack Total Power
+    #   unique_id: sensor.rack_total_power
+    #   device_class: power
+    #   unit_of_measurement: W
+    #   state: >
+    #     {{ states.sensor | selectattr('entity_id', 'in', area_entities('Rack')) | rejectattr('entity_id', 'eq', 'sensor.rack_outlet_power') | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'power') | rejectattr('state', 'eq', 'unavailable') | map(attribute='state') | map('float') | sum }}
+    - name: Energy Rate
+      unique_id: sensor.energy_rate
+      unit_of_measurement: USD/kWh
+      state: >
+        0.12155
+    # - name: Appliances Energy
+    #   unique_id: sensor.appliances_energy
+    #   device_class: energy
+    #   unit_of_measurement: kWh
+    #   state_class: total_increasing
+    #   state: >
+    #     {%  set freezer = states('sensor.freezer_outlet_energy') | float %}
+    #     {%  set kegerator = states('sensor.kegerator_outlet_energy') | float %}
+    #     {{ freezer + kegerator | round(default=0) }}
+    #   attributes:
+    #     last_reset: "1920-03-17T00:00:00+00:00"
+    # - name: Computers Energy
+    #   unique_id: sensor.computers_energy
+    #   device_class: energy
+    #   unit_of_measurement: kWh
+    #   state_class: total_increasing
+    #   state: >
+    #     {%  set desk = states('sensor.desk_outlet_energy') | float %}
+    #     {%  set rack = states('sensor.rack_outlet_energy') | float %}
+    #     {{ desk + rack | round(default=0) }}
+    #   attributes:
+    #     last_reset: "1920-03-17T00:00:00+00:00"

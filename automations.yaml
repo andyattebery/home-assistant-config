@@ -1,0 +1,114 @@
+- id: '1644508345980'
+  alias: Nursery - Motion Activated Lights
+  description: ''
+  use_blueprint:
+    path: networkingcat/yet_another_motion_automation.yaml
+    input:
+      motion_entity: binary_sensor.motion_sensor_1_zone
+      scene_evening: scene.nursery_evening
+      scene_night: scene.nursery_off
+      time_scene_morning: 05:00:00
+      time_scene_day: 09:00:00
+      time_scene_evening: '17:00:00'
+      time_scene_night: '23:00:00'
+      light_target:
+        entity_id:
+        - light.elephant_lamp
+        - light.nursery_floor_lamp
+      scene_day: scene.nursery_off
+      scene_morning: scene.nursery_off
+- id: '1645301602290'
+  alias: Office - Dimmer Switch
+  description: Hue dimmer switch
+  use_blueprint:
+    path: hue_dimmer_switch.yaml
+    input:
+      dimmer_switch: 1a9d37310b5f37e11ce8ed05fd135544
+      lights:
+        device_id: fab783d763efd51a210834a8fa487f78
+- id: '1645339174858'
+  alias: Nursery - Dimmer Switch
+  description: ''
+  use_blueprint:
+    path: hue_dimmer_switch.yaml
+    input:
+      dimmer_switch: 55e009b3e6e5a7010343a70397993bed
+      lights:
+        area_id: nursery
+- id: '1650128806311'
+  alias: Turn off headphone amps
+  description: ''
+  trigger:
+  - platform: time
+    at: '19:00:00'
+  condition: []
+  action:
+  - service: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - switch.desk_3_switch_02_outlet_switch_1
+      - switch.desk_3_switch_02_outlet_switch_2
+  mode: single
+- id: '1663339359263'
+  alias: 'Schedule: Let''s Encrypt startup'
+  description: ''
+  trigger:
+  - platform: time
+    at: 05:05:00
+  condition: []
+  action:
+  - service: hassio.addon_start
+    data:
+      addon: core_letsencrypt
+  mode: single
+- id: '1668370287605'
+  alias: Restore Samba Backup sensor on startup
+  description: ''
+  use_blueprint:
+    path: thomasmauerer/restore_samba_backup_sensor.yaml
+    input:
+      addon: 15d21743_samba_backup
+- id: '1670184045581'
+  alias: 'Nursery: CO2 Alert'
+  description: ''
+  trigger:
+  - type: carbon_dioxide
+    platform: device
+    device_id: eea734e3beefa5a96465ae459f68c19b
+    entity_id: sensor.awair_element_1_carbon_dioxide
+    domain: sensor
+    above: 1100
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  condition: []
+  action:
+  - service: notify.mobile_app_beta
+    data:
+      title: 'Nursery: CO2 Alert'
+      message: CO2 > 1000ppm
+  mode: single
+- id: '1693103281214'
+  alias: Nursery - Tap Switch
+  description: ''
+  use_blueprint:
+    path: hue_tap_switch.yaml
+    input:
+      tap_switch: 30a2b5ed959285ffef22e06740ca58cc
+      lights_target:
+        area_id: nursery
+      scene_3:
+        entity_id: scene.nursery_night_light
+      scene_1:
+        entity_id: scene.nursery_day
+      scene_2:
+        entity_id: scene.nursery_evening
+      scene_or_script_1:
+        entity_id: script.nursery_wake_up
+      scene_or_script_2:
+        entity_id: script.nursery_night_time
+      scene_or_script_3:
+        entity_id: scene.nursery_night_light

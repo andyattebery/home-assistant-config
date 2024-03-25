@@ -1,0 +1,19 @@
+logs:
+  default: debug
+  # homeassistant.core: debug
+  # homeassistant.components.homekit: debug
+  # homeassistant.components.zha: debug
+  # bellows.zigbee.application: debug
+  # bellows.ezsp: debug
+  # kaiterra_async_client: debug
+  # zigpy: debug
+  # zigpy_deconz.zigbee.application: debug
+  # zigpy_deconz.api: debug
+  # zigpy_xbee.zigbee.application: debug
+  # zigpy_xbee.api: debug
+  # zigpy_zigate: debug
+  # zigpy_znp: debug
+  # zhaquirks: debug
+  # custom_components.powercalc: debug
+  # custom_components.ha_hatch: debug
+  # hatch_rest_api: debug
