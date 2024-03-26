@@ -63,13 +63,6 @@
     data:
       addon: core_letsencrypt
   mode: single
-- id: '1668370287605'
-  alias: Restore Samba Backup sensor on startup
-  description: ''
-  use_blueprint:
-    path: thomasmauerer/restore_samba_backup_sensor.yaml
-    input:
-      addon: 15d21743_samba_backup
 - id: '1670184045581'
   alias: 'Nursery: CO2 Alert'
   description: ''
