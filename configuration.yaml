@@ -3,7 +3,6 @@ default_config:
 
 # adaptive_lighting: !include adaptive_lighting.yaml
 automation: !include automations.yaml
-group: !include groups.yaml
 homekit: !include homekit.yaml
 light groups: !include light_groups.yaml
 logger: !include logger.yaml

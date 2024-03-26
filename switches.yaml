@@ -1,3 +1,4 @@
+# SNMP
 - platform: snmp
   name: Network PDU Outlet 1
   version: "1"

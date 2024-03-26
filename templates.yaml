@@ -53,25 +53,3 @@
       unit_of_measurement: USD/kWh
       state: >
         0.12155
-    # - name: Appliances Energy
-    #   unique_id: sensor.appliances_energy
-    #   device_class: energy
-    #   unit_of_measurement: kWh
-    #   state_class: total_increasing
-    #   state: >
-    #     {%  set freezer = states('sensor.freezer_outlet_energy') | float %}
-    #     {%  set kegerator = states('sensor.kegerator_outlet_energy') | float %}
-    #     {{ freezer + kegerator | round(default=0) }}
-    #   attributes:
-    #     last_reset: "1920-03-17T00:00:00+00:00"
-    # - name: Computers Energy
-    #   unique_id: sensor.computers_energy
-    #   device_class: energy
-    #   unit_of_measurement: kWh
-    #   state_class: total_increasing
-    #   state: >
-    #     {%  set desk = states('sensor.desk_outlet_energy') | float %}
-    #     {%  set rack = states('sensor.rack_outlet_energy') | float %}
-    #     {{ desk + rack | round(default=0) }}
-    #   attributes:
-    #     last_reset: "1920-03-17T00:00:00+00:00"
